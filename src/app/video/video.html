@@ -1,0 +1,128 @@
+<div ng-controller="videoCtrl" ng-cloak="">
+<script>
+    
+</script>
+<md-toolbar class="md-primary" >
+    <div class="md-toolbar-tools">
+        <span>COURSES</span>
+        <span>LEARNING PATHS</span>
+        <span>COHORTS</span>
+        <span>SETTINGS</span>
+        <span flex class="flex"></span>
+        <div class="search-container" style="background: white;color: black;">
+            <i class="fa fa-search" style="padding-left: 10px"></i>
+            <input type="text" style="border: 0px;color: black;" placeholder="Search" />
+        </div>
+    </div>
+</md-toolbar>
+<div style="background: rgba(0, 0, 0, 0.07);padding: 5px">
+    <span>HOME</span>
+    <i class="fa fa-angle-right"></i>
+    <span>COURSES</span>
+    <i class="fa fa-angle-right"></i>
+    <span>ADD</span>
+</div>
+
+<div layout="row">
+    <div flex="25">
+        <md-card>
+            <md-card-header style="background: rgba(0, 0, 0, 0.07);">
+                    <md-card-header-text style="padding: 12px;">CLASSIFICATION</md-card-header-text>
+                     <md-button class="md-primary md-raised">CLEAR ALL </md-button> 
+            </md-card-header>     
+            <md-card-content>
+                <v-accordion class="vAccordion--default" multiple>
+                    <v-pane >
+                        <v-pane-header>
+                          TYPE
+                        </v-pane-header>
+
+                        <v-pane-content>
+                          <input type="text" style="padding: 5px; width: 95%;" value="video" disabled>
+                        </v-pane-content>
+                    </v-pane>
+
+                    <v-pane >
+                        <v-pane-header>
+                          COMPETENCY
+                        </v-pane-header>
+
+                        <v-pane-content>
+                                <md-chips ng-model="skills" readonly="ctrl.readonly"></md-chips>  
+                        </v-pane-content>
+                    </v-pane>
+
+                    <v-pane >
+                        <v-pane-header>
+                          LEVEL
+                    </v-pane-header>
+
+                    <v-pane-content>
+                            <input type="text" style="padding: 5px; width: 95%;" value="SELECT" disabled>  
+                        </v-pane-content>
+                    </v-pane>
+                    <v-pane >
+                        <v-pane-header>
+                          FEATURES
+                    </v-pane-header>
+
+                    <v-pane-content>
+                        <md-switch class="md-primary" md-no-ink>
+                            Enable Instant Feedback
+                        </md-switch>
+                        <md-switch class="md-primary" md-no-ink>
+                            Allow skip questions
+                        </md-switch>    
+                        </v-pane-content>
+                    </v-pane>
+                </v-accordion>
+
+            </md-card-content>    
+        </md-card>    
+    </div>
+    <div flex="75" layout="column">
+        <div layout="row">
+        <md-input-container flex="50" style="margin-top: 10px;margin-bottom: 0px;"> 
+          <label>Course Title</label>
+          <input required name="courseTitle" ng-model="course.title">
+        </md-input-container>
+
+        <md-input-container flex="50" style="margin-top: 10px;margin-bottom: 0px;">
+          <label>Duration</label>
+          <input required name="duration" ng-model="course.duration">
+        </md-input-container>
+        </div>
+        <div>
+            <md-input-container class="md-block" style="margin-top: 10px;margin-bottom: 0px;">
+                <label>Description</label>
+                <textarea ng-model="course.description" md-maxlength="150" rows="2" md-select-on-focus></textarea>
+            </md-input-container>
+        </div>
+        <div layout="row">
+            <div  class="search-container" style="background: white;color: black;">
+            <i class="far fa-clipboard" style="color: #3f51b5;padding-left: 10px;font-size: 30px !important;"></i>
+            </div>
+            <div flex="60" style="padding-left: 10px">
+            <input type="text" style="padding:5px;border: 1px rgba(0, 0, 0, 0.17) solid;color: black;width: 100%" placeholder="Enter video url" ng-model="course.url" />
+            </div>
+            <div flex="30" style="padding: 5px;margin-left: 10px;">
+                <span> {{course.questions.length}} Questions added </span>
+            </div>
+            <div flex="10" style="float: right;">
+            <md-button class="md-primary md-raised" ng-click="clearAll()" style="margin: 0px;">RESET </md-button>
+            </div>
+        </div>
+        <div class="video-container">
+            <video id="video" width="500" height="250" controls>
+                  <source src="{{course.url | trustUrl}}" type="video/mp4">
+            </video>
+        </div>
+        <div layout="row" layout-align="center center" style="margin-top: 20px;margin-bottom: 20px">
+            <md-button class="md-raised md-primary" ng-click="showAdvanced($event)">ADD QUESTION</md-button>
+            <md-button class="md-raised md-primary" ng-click="preview()">PREVIEW</md-button>
+            <md-button class="md-raised md-primary">SUBMIT</md-button>
+        </div>
+    </div>
+</div>
+
+</div>

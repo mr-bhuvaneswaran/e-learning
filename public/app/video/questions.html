@@ -1,0 +1,126 @@
+<md-dialog  aria-label="Add Question">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Add Question</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <i class="fa fa-times"></i>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div layout="column" class="md-dialog-content">
+        <div layout="row" style="height: 10vh;">
+          <md-radio-group ng-init="type='MCQ'" ng-model="type" flex="25">
+            <label>Question Type *</label>
+            <md-radio-button value="MCQ" class="md-primary"><span style="font-size: 10px;padding: 5px;">MULTIPLE CHOICE QUESTION</span></md-radio-button>
+          </md-radio-group>
+          <md-input-container flex="75">
+            <label>Question</label>
+            <input required name="question" ng-model="course.question">
+          </md-input-container>
+        </div>
+        <div style="height: 10vh;">
+          <md-input-container  style="width: 20%">
+            <label>Video Time</label>
+            <input id="time" ng-model="videoTime" type="text" pattern="[0-9]{2}:[0-9]{2}" step="2">
+          </md-input-container>
+        </div>
+        <div>
+          <span flex="25">ENTER THE CHOICES</span>
+          <div style="float: right;">
+          <md-checkbox md-no-ink aria-label="Individual-score" ng-model="unitscore" class="md-primary">
+            Individual score
+          </md-checkbox>
+                    <md-checkbox md-no-ink aria-label="Enter-feedback" ng-model="feedback" class="md-primary">
+            Enter Feedback
+          </md-checkbox>
+                    <md-checkbox md-no-ink aria-label="Randomize-choice" ng-model="random" class="md-primary">
+              Randomize choices
+          </md-checkbox>
+          </div>
+        </div>
+        <div>
+          <table border="1" style="border-collapse: collapse;">
+            <tbody>
+              <tr>
+                <th></th>
+                <th>CORRECT</th>
+                <th>CHOICES</th>
+                <th>POINTS</th>
+              </tr>
+              <tr>
+                <td>A</td>
+                <td><input type="radio" name="optionra"></td>
+                <td>
+                    <input style="border-top: none;border-left: none;border-right: none;" name="optiona" placeholder="Option A" ng-model="optiona">
+                </td>
+                <td><input style="border-top: none;border-left: none;border-right: none;" name="pointa" ng-init="pointa='0'" ng-model="pointa">
+              </tr>
+              <tr>
+                <td>B</td>
+                <td><input type="radio" name="optionrb"></td>
+                <td>
+                    <input style="border-top: none;border-left: none;border-right: none;" name="optionb" placeholder="Option B" ng-model="optionb">
+                </td>
+                <td>
+                    <input style="border-top: none;border-left: none;border-right: none;" name="pointb" ng-init="pointb='0'" ng-model="pointb">
+                </td>    
+              </tr>
+              <tr>
+                <td>C</td>
+                <td><input type="radio" name="optionrc"></td>
+                <td>
+                    <input style="border-top: none;border-left: none;border-right: none;" name="optionc" placeholder="Option C" ng-model="optionc">
+                </td>
+                <td>
+                  <input style="border-top: none;border-left: none;border-right: none;" name="pointc" ng-init="pointc='0'" ng-model="pointc">
+              </tr>
+
+              <tr>
+                <td>D</td>
+                <td><input type="radio" name="optionrd"></td>
+                <td colspan="2">CLICK TO ADD OPTION</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <br>
+          <span>SET FEEDBACK</span>
+          <p></p>
+        </div>
+        <div>
+          <table>
+            <tbody>
+              <tr>
+                <th>FEEDBACK</th>
+                <th>VALUES</th>
+              </tr>
+              <tr>
+                <td>IF CORRECT</td>
+                <td><input type="textarea" style="width: 100%;border-top: none;border-left: none;border-right: none;" name="correct" ng-init="correct='Well Done!Correct answer'" ng-model="correct"></td>
+              </tr>
+              <tr>
+                <td>IF INCORRECT</td>
+                <td><input type="textarea" style="width: 100%;border-top: none;border-left: none;border-right: none;" name="incorrect" ng-init="incorrect='Sorry! Try again'" ng-model="incorrect"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button class="md-primary md-raised" ng-click="answer('not useful')">
+        Cancel
+      </md-button>
+      <md-button class="md-primary md-raised" ng-click="answer('useful')">
+        Submit
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

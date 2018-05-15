@@ -1,0 +1,36 @@
+<div ng-controller="loginCtrl" class="md-padding selectdemoBasicUsage" ng-cloak="">
+  <md-content class="md-padding" style="padding-top:5%" layout-xs="column" layout="row" layout-align="center center">
+    <div flex-xs flex-gt-xs="40" layout="column" layout-align="center center">
+        <md-card class="card-40-center login-card" >
+            <md-card-title class="login-header">
+                <md-card-title-text>
+                    <span class="md-headline"><center>Sign in</center></span>
+                </md-card-title-text>
+            </md-card-title>
+            <div class="md-padding" layout-align="center">
+                <div layout="column">
+                <md-input-container flex="100">
+                    <label>Username</label>
+                    <input ng-model="username">
+                </md-input-container>
+                <md-input-container flex="100">
+                    <label>Password</label>
+                    <input style="-webkit-text-security: disc;" ng-model="password" >
+                </md-input-container>
+                <md-checkbox ng-model="remember_login" class="md-primary">
+                <label>Remember me</label>
+                </md-checkbox>    
+                    </div>
+            
+            <md-card-actions layout="row" layout-align="center">
+                <br>
+                <center>
+                    <md-button ng-click="sign_in()" class="md-primary md-raised">sign me in</md-button>
+
+                </center>
+                </div>
+            </md-card-actions>
+        </md-card>
+    </div>
+</md-content>
+</div>
